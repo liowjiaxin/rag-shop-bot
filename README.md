@@ -18,6 +18,7 @@ A web-based Retrieval-Augmented Generation (RAG) chatbot for e-commerce FAQs and
 - Python, Streamlit (UI)
 - FAISS (vector database)
 - Groq API (LLM inference)
+- LangChain (RAG framework) ✨ NEW
 - `python-dotenv` (secure keys via `.env`)
 
 ---
@@ -41,8 +42,15 @@ A web-based Retrieval-Augmented Generation (RAG) chatbot for e-commerce FAQs and
     ```
 
 4. Run the chatbot:
+    
+    **Original Version (Custom RAG):**
     ```bash
     python -m streamlit run app/ui_streamlit.py
+    ```
+    
+    **LangChain Version (Recommended):**
+    ```bash
+    python -m streamlit run app/ui_streamlit_langchain.py
     ```
 
 ---
