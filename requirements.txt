@@ -4,3 +4,6 @@ sentence-transformers
 faiss-cpu
 requests
 python-dotenv
+langchain
+langchain-community
+langchain-groq
