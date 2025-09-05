@@ -1,20 +1,21 @@
 import os
 import requests
+from dotenv import load_dotenv
+
+# Load .env file
+load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GROQ_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 def generate_answer(question, hits):
     """
-    Generate a natural answer using Groq-hosted LLaMA-3.
-    - Builds context from retrieved hits
-    - Sends prompt to Groq API
+    Generate an answer using Groq-hosted LLaMA-3.
     """
-
     if not hits:
         return "Sorry, I don’t have an answer for that."
 
-    # Combine top-k retrieved chunks
+    # Combine retrieved chunks
     context = "\n\n".join([doc["text"] for doc, _ in hits])
 
     prompt = f"""
@@ -31,7 +32,8 @@ def generate_answer(question, hits):
 
     headers = {"Authorization": f"Bearer {GROQ_API_KEY}"}
     data = {
-        "model": "llama3-8b-8192",  # free Groq-hosted LLaMA3
+        "model": "llama-3.1-8b-instant",   # current Groq-hosted modeladd docs: add comprehensive README with project overview, features, setup instructions, and tech stack
+
         "messages": [
             {"role": "system", "content": "You are a helpful assistant."},
             {"role": "user", "content": prompt}
